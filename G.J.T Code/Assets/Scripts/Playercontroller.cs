@@ -10,6 +10,7 @@ public class Playercontroller : MonoBehaviour
     [Header("Required Components")]
 
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator Anim;
 
     [Header("Additional Stuff")]
     public Vector2 Move;
@@ -23,6 +24,7 @@ public class Playercontroller : MonoBehaviour
 
         //Get final summed movement
         Move = (Axis * speed * Time.fixedDeltaTime);
+        AnimationController();
     }
 
     //the movement is calculated here
@@ -30,4 +32,20 @@ public class Playercontroller : MonoBehaviour
     {
         rb.MovePosition(rb.position + Move);
     }
+
+    void AnimationController()
+    {
+        if (Axis.x == 0 && Axis.y == 0)
+        {
+            Anim.SetBool("idle", true);
+        }
+        else
+        {
+            Anim.SetBool("idle", false);
+        }
+
+        Anim.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+        Anim.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+    }
+    
 }
