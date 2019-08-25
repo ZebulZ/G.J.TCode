@@ -22,12 +22,12 @@ public class Playercontroller : MonoBehaviour
         Axis.y = Input.GetAxisRaw("Vertical");
 
         //Get final summed movement
-        Move = (rb.position + Axis * speed * Time.fixedDeltaTime);
+        Move = (Axis * speed * Time.fixedDeltaTime);
     }
 
     //the movement is calculated here
     void FixedUpdate()
     {
-        rb.MovePosition(Move);
+        rb.MovePosition(rb.position + Move);
     }
 }
