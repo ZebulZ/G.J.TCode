@@ -10,6 +10,9 @@ public class Skeleton : Enemy
 
     public Skeleton(Transform skeletonObj)
     {
+    //    PathFinder pathFind = gameObject.AddComponent<PathFinder>();
+    //    Debug.Log("this happens")
+    //    base.pathFinder = pathFind;
         base.enemyObj = skeletonObj;
     }
 
@@ -26,6 +29,7 @@ public class Skeleton : Enemy
             case EnemyState.Patrol:
                 if (distance < 3)
                 {
+                    enemyObj.rotation = Quaternion.Inverse(enemyObj.rotation);
                     skeletonState = EnemyState.Flee;
                 }
                 break;
