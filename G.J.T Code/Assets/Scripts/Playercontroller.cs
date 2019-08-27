@@ -16,6 +16,8 @@ public class Playercontroller : MonoBehaviour
     [Header("Additional Stuff")]
     public Vector2 Move;
     public Vector2 Axis;
+
+    [Header("Do Not Touch")]
     //store the value of the last pressed  key
     public float[] lastPressed = new float[2];
 
