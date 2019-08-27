@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3548913521212226330}
   - component: {fileID: 8385712097005674640}
   - component: {fileID: 8448098965122042016}
+  - component: {fileID: 6783220765907595019}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -94,9 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff822850a68719948834de3b07a90ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  Direction: {x: 0, y: 0}
+  Speed: 10
+  rb: {fileID: 0}
   LifeTime: Infinity
+  lastPressed: []
 --- !u!61 &8385712097005674640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,3 +144,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &6783220765907595019
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8474688057940470190}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

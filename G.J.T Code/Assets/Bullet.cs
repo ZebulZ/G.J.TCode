@@ -1,21 +1,26 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Bullet : MonoBehaviour
 {
     // [SerializeField] private float Damage;
     [SerializeField] private float Speed;
-    [SerializeField] private Vector2 Direction;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float LifeTime = 2;
+
+    [SerializeField] private float[] lastPressed;
+
 
     private void OnEnable()
     {
-        Direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, LifeTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Direction * Time.fixedDeltaTime * Speed);
+        rb.velocity = -transform.up * Speed;
+
     }
 }
