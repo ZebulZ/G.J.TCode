@@ -75,6 +75,26 @@ public class Shoot : MonoBehaviour
                 BulletPointD.SetActive(true);
                 BulletPointL.SetActive(false);
             }
+
+        if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+
+        }
         if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot)
         {
             Instantiate(Bullet, BulletPoint.position, BulletPoint.rotation);
