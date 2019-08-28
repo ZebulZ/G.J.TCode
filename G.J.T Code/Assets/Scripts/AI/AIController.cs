@@ -7,28 +7,16 @@ public class AIController : MonoBehaviour
     [SerializeField]
     private GameObject playerObj;
     [SerializeField]
-    private GameObject skeletonObj;
+    private Skeleton skeletonObj;
 
-    List<Enemy> enemies = new List<Enemy>();
+    List<Skeleton> enemies = new List<Skeleton>();
 
     private int lifetime = 0;
     private bool startAI = false;
-    Skeleton sk;
-
-    private void Start()
-    {
-        PreSetup();
-    }
-
-    private void PreSetup()
-    {
-        Skeleton skeleton = new Skeleton(skeletonObj.transform);
-        sk = skeleton;
-    }
-
+    
     private void Setup()
     {
-        enemies.Add(sk);
+        enemies.Add(skeletonObj);
     }
 
     //Did the presetup and setup to try and give 30 frames to the object to see if the null goes away

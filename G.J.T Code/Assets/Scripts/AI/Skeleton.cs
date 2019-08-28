@@ -2,40 +2,80 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : Enemy
+//The different states the enemy can be in
+public enum EnemyState
 {
-    EnemyState skeletonState = EnemyState.Patrol;
+    Attack,
+    Flee,
+    Patrol,
+    MoveTowardsPlayer
+}
 
-    float health = 100f;
+public class Skeleton : MonoBehaviour
+{
+    [Header ("Path Finding")]
+    //Patrol path to follow
+    [SerializeField]
+    private EditorPath pathToFollow;
 
-    //Constructor for the enemy. Binds to the tranform of the actual object
-    public Skeleton(Transform skeletonObj)
-    {
-        base.enemyObj = skeletonObj;
-    }
+    [Header ("Enemy stats")]
+    [SerializeField]
+    private float health = 100f;
+    [SerializeField]
+    private float fleeSpeed = 10f;
+    [SerializeField]
+    private float fleeThreshold = 20f;
+    [SerializeField]
+    private float patrolSpeed = 5f;
+    [SerializeField]
+    private float chargingSpeed = 10f;
+    [SerializeField]
+    private float attackRange = 3f;
+    [SerializeField]
+    private float sightRange = 3f;
+    [SerializeField]
+    private float rotationSpeed = 5f;
+    [SerializeField]
+    private float attackSpeed = 1f;
 
+
+    private EnemyState skeletonState = EnemyState.Patrol;
+    
     /// <summary>
     /// Will be different for every enemy. Updates the state of the enemy depending on the situation
     /// </summary>
     /// <param name="playerObj"></param>
-    public override void UpdateEnemy(Transform playerObj)
+    public void UpdateEnemy(Transform playerObj)
     {
-        float distance = (base.enemyObj.position - playerObj.position).magnitude;
+        float distance = (transform.position - playerObj.position).magnitude;
 
         switch (skeletonState)
         {
             case EnemyState.Attack:
+                if(health <= fleeThreshold)
+                {
+                    skeletonState = EnemyState.Flee;
+                }
                 break;
             case EnemyState.Flee:
                 break;
             case EnemyState.Patrol:
-                if (distance < 3)
+                if (distance < sightRange)
                 {
-                    enemyObj.rotation = Quaternion.Inverse(enemyObj.rotation);
-                    skeletonState = EnemyState.Flee;
+                    skeletonState = EnemyState.MoveTowardsPlayer;
                 }
                 break;
             case EnemyState.MoveTowardsPlayer:
+                Debug.Log(Vector3.Distance(transform.position, playerObj.position));
+                if(Vector3.Distance(transform.position, playerObj.position) < attackRange)
+                {
+                    skeletonState = EnemyState.Attack;
+                }
+                if(Vector3.Distance(transform.position, playerObj.position) > sightRange)
+                {
+                    pathToFollow.ResetCurrentWaypoint();
+                    skeletonState = EnemyState.Patrol;
+                }
                 break;
             default:
                 break;
@@ -49,28 +89,27 @@ public class Skeleton : Enemy
     /// </summary>
     /// <param name="playerObj"></param>
     /// <param name="enemyMode"></param>
-    public override void DoAction(Transform playerObj, EnemyState enemyMode)
+    public void DoAction(Transform playerObj, EnemyState enemyMode)
     {
         //if (pathFinder == null) return;
         //if (editorPath == null) return;
 
-        float fleeSpeed = 10f;
-        float patrolSpeed = 1f;
-        float attackSpeed = 5f;
-        float rotationSpeed = 5f;
 
         switch (enemyMode)
         {
             case EnemyState.Attack:
                 break;
             case EnemyState.Flee:
-                enemyObj.transform.position += new Vector3(-0.1f, 0, 0);
+                pathToFollow.ResetCurrentWaypoint();
+                pathToFollow.MoveOnPath(transform, fleeSpeed, rotationSpeed);
                 break;
             case EnemyState.Patrol:
                 //enemyObj.transform.position += new Vector3(0.1f, 0, 0);
-                pathFinder.MoveOnPath(patrolSpeed, rotationSpeed, editorPath);
+                pathToFollow.MoveOnPath(transform, patrolSpeed, rotationSpeed);
                 break;
             case EnemyState.MoveTowardsPlayer:
+                Debug.Log("this is the problem");
+                transform.position = Vector3.Lerp(transform.position, playerObj.position, Time.deltaTime * chargingSpeed);
                 break;
             default:
                 break;
