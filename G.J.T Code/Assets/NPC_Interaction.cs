@@ -55,9 +55,12 @@ public class NPC_Interaction : MonoBehaviour
 
     public void Yes()
     {
-        DialogueCount++;
-        Text.text = Dialogues[DialogueCount];
-        if(DialogueCount == Dialogues.Length -1)
+        if(DialogueCount < Dialogues.Length - 1)
+        {
+            DialogueCount++;
+            Text.text = Dialogues[DialogueCount];
+        }
+        if(DialogueCount == Dialogues.Length - 1)
         {
             ItemDisplay.SetActive(true);
             ButtonNegative.text = BuyNegative;
