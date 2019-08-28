@@ -77,7 +77,7 @@ public class Shoot : MonoBehaviour
             }
         if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot)
         {
-            Instantiate(Bullet, BulletPoint.position, Bullet.transform.rotation);
+            Instantiate(Bullet, BulletPoint.position, BulletPoint.rotation);
             CanShoot = false;
             StartCoroutine(firerate());
         }
