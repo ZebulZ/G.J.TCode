@@ -15,6 +15,11 @@ public class Shoot : MonoBehaviour
     [SerializeField] private GameObject BulletPointL;
     [SerializeField] private GameObject BulletPointR;
 
+    [SerializeField] private GameObject SD;
+    [SerializeField] private GameObject WD;
+    [SerializeField] private GameObject WA;
+    [SerializeField] private GameObject SA;
+
     private bool CanShoot = true;
 
 
@@ -78,22 +83,22 @@ public class Shoot : MonoBehaviour
 
         if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
         {
-
+            BulletPoint = WA.transform;
         }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
         {
-
+            BulletPoint = WD.transform;
         }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
         {
-
+            BulletPoint = SD.transform;
         }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
         {
-
+            BulletPoint = SA.transform;
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot)
         {
