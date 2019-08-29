@@ -294,6 +294,31 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5434363078797140898, guid: f61fa459e8b9cdf42b891bddf03ba23e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434363078797140898, guid: f61fa459e8b9cdf42b891bddf03ba23e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434363078797140898, guid: f61fa459e8b9cdf42b891bddf03ba23e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434363078797140898, guid: f61fa459e8b9cdf42b891bddf03ba23e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434363078797140898, guid: f61fa459e8b9cdf42b891bddf03ba23e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f61fa459e8b9cdf42b891bddf03ba23e, type: 3}
 --- !u!1 &86351925
@@ -1001,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 8474688057940470190, guid: 34c1065276469744ca268d220e54c509, type: 3}
-  FireRate: 1
+  FireRate: 0.35
   BulletPoint: {fileID: 1970722745}
   lastPressed:
   - 0
@@ -1010,6 +1035,7 @@ MonoBehaviour:
   BulletPointU: {fileID: 204618094}
   BulletPointL: {fileID: 847671307}
   BulletPointR: {fileID: 1356637803}
+  IsInteracting: 0
   SD: {fileID: 1456647412}
   WD: {fileID: 594390198}
   WA: {fileID: 711864443}

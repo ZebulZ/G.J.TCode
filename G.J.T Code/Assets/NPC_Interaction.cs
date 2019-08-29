@@ -42,6 +42,7 @@ public class NPC_Interaction : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            collision.GetComponent<Shoot>().IsInteracting = true;
             Anim.SetBool("Enter", true);
             //display text
             TextFied.SetActive(true);
@@ -80,6 +81,7 @@ public class NPC_Interaction : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            collision.GetComponent<Shoot>().IsInteracting = false;
             DialogueCount = 0;
             ItemDisplay.SetActive(false);
 

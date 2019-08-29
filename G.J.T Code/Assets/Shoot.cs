@@ -10,11 +10,16 @@ public class Shoot : MonoBehaviour
     [SerializeField] private Transform BulletPoint;
     [SerializeField] private float[] lastPressed;
 
+    [Header("Bullet Spawn Points")]
     [SerializeField] private GameObject BulletPointD;
     [SerializeField] private GameObject BulletPointU;
     [SerializeField] private GameObject BulletPointL;
     [SerializeField] private GameObject BulletPointR;
 
+    [Header("State")]
+    [HideInInspector]public bool IsInteracting;
+
+    [Header("Bullet Diagonal Spawn Points")]
     [SerializeField] private GameObject SD;
     [SerializeField] private GameObject WD;
     [SerializeField] private GameObject WA;
@@ -100,7 +105,7 @@ public class Shoot : MonoBehaviour
         {
             BulletPoint = SA.transform;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot && !IsInteracting)
         {
             Instantiate(Bullet, BulletPoint.position, BulletPoint.rotation);
             CanShoot = false;
