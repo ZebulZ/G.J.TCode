@@ -99,6 +99,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   LifeTime: 3
   Damage: 20
+  Anim: {fileID: 8448098965122042016}
 --- !u!61 &8385712097005674640
 BoxCollider2D:
   m_ObjectHideFlags: 0

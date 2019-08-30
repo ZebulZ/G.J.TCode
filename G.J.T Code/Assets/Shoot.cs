@@ -106,7 +106,7 @@ public class Shoot : MonoBehaviour
         {
             BulletPoint = SA.transform;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot && !IsInteracting)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot && !IsInteracting && GetComponent<ManaController>().mana != 0)
         {
             GetComponent<ManaController>().SubstractMana(ManaAmmount);
             Instantiate(Bullet, BulletPoint.position, BulletPoint.rotation);

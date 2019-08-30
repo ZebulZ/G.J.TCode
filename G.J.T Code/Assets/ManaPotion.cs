@@ -4,21 +4,30 @@ public class ManaPotion : MonoBehaviour
 {
     [SerializeField] private float ManaAmmount;
     [SerializeField] private Sprite Icon;
+    [SerializeField] private GameObject Text;
 
     private void Start()
     {
         GetComponent<SpriteRenderer>().sprite = Icon;
+        Text.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if(collision.GetComponent<ManaController>().mana != collision.GetComponent<ManaController>().Initialmana)
+            Text.SetActive(true);
+
+            if (Input.GetKey(KeyCode.E))
             {
                 collision.GetComponent<ManaController>().AddMana(ManaAmmount);
-                Destroy(gameObject);
+                Destroy (gameObject);   
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Text.SetActive(false);
     }
 }

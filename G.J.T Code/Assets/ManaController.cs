@@ -16,6 +16,10 @@ public class ManaController : MonoBehaviour
     public void SubstractMana(float SubstractAmmount)
     {
         mana -= SubstractAmmount;
+        if (mana < 0)
+        {
+            mana = 0;
+        }
         manaBar.fillAmount = mana / Initialmana;
     }
 
