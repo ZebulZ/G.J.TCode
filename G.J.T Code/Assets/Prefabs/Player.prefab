@@ -75,6 +75,8 @@ GameObject:
   - component: {fileID: 2098113675885257326}
   - component: {fileID: 2098113675885257321}
   - component: {fileID: 2098113675885257320}
+  - component: {fileID: 724131353}
+  - component: {fileID: 2518027388778994136}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -230,6 +232,7 @@ MonoBehaviour:
   lastPressed:
   - 0
   - 0
+  ManaAmmount: 5
   BulletPointD: {fileID: 2098113676979266397}
   BulletPointU: {fileID: 2098113676228380262}
   BulletPointL: {fileID: 2098113676102504165}
@@ -265,6 +268,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5625, y: 0.8125}
   m_EdgeRadius: 0
+--- !u!114 &724131353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098113675885257323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b834ff55ccc50498d955e66c044365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mana: 200
+  manaBar: {fileID: 0}
+--- !u!114 &2518027388778994136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098113675885257323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4568ecba95369e941b369036357326df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  HealthBar: {fileID: 0}
 --- !u!1 &2098113675922988156
 GameObject:
   m_ObjectHideFlags: 0

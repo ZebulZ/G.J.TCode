@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
     //position of the bullet spawn
     [SerializeField] private Transform BulletPoint;
     [SerializeField] private float[] lastPressed;
+    [SerializeField] private float ManaAmmount;
 
     [Header("Bullet Spawn Points")]
     [SerializeField] private GameObject BulletPointD;
@@ -107,6 +108,7 @@ public class Shoot : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot && !IsInteracting)
         {
+            GetComponent<ManaController>().SubstractMana(ManaAmmount);
             Instantiate(Bullet, BulletPoint.position, BulletPoint.rotation);
             CanShoot = false;
             StartCoroutine(firerate());

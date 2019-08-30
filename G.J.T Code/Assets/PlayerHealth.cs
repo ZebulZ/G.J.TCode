@@ -7,15 +7,22 @@ public class PlayerHealth : MonoBehaviour
     public float Health = 100;
     [SerializeField] private Image HealthBar;
 
-    private float InitilaHealth;
+    public float InitilaHealth;
 
     void Start()
     {
         InitilaHealth = Health;
     }
 
-    void Update()
+    public void SubstractHealth(float Ammount)
     {
+        Health -= Ammount;
+        HealthBar.fillAmount = Health / InitilaHealth;
+    }
+
+    public void AddHealth(float HealAmmount)
+    {
+        Health += HealAmmount;
         HealthBar.fillAmount = Health / InitilaHealth;
     }
 }
