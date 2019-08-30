@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   HealthBar: {fileID: 0}
+  InitilaHealth: 0
 --- !u!1 &2098113675922988156
 GameObject:
   m_ObjectHideFlags: 0

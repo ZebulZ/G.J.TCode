@@ -5,6 +5,12 @@ using UnityEngine;
 public class HealthPotion : MonoBehaviour
 {
     [SerializeField] private float HealAmmount;
+    [SerializeField] private Sprite Icon;
+
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = Icon;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

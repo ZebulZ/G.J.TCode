@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public float Health = 100;
     [SerializeField] private Image HealthBar;
 
-    public float InitilaHealth;
+    [HideInInspector] public float InitilaHealth;
 
     void Start()
     {

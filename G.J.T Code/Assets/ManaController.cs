@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class ManaController : MonoBehaviour
 {
-    private float Initialmana;
-    [SerializeField] private float mana;
+    [HideInInspector] public float Initialmana;
+    public float mana;
     [SerializeField] private Image manaBar;
 
     private void Start()
@@ -16,6 +16,16 @@ public class ManaController : MonoBehaviour
     public void SubstractMana(float SubstractAmmount)
     {
         mana -= SubstractAmmount;
+        manaBar.fillAmount = mana / Initialmana;
+    }
+
+    public void AddMana(float AddAmmount)
+    {
+        mana += AddAmmount;
+        if(mana > Initialmana)
+        {
+            mana = Initialmana;
+        }
         manaBar.fillAmount = mana / Initialmana;
     }
 }
