@@ -40,7 +40,13 @@ public class Skeleton : MonoBehaviour
 
 
     private EnemyState skeletonState = EnemyState.Patrol;
-    
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, sightRange);
+    }
+
     /// <summary>
     /// Will be different for every enemy. Updates the state of the enemy depending on the situation
     /// </summary>
