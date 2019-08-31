@@ -3,30 +3,28 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private Image HealthBar;
-    //@Zebul you can edit this for the different types of enemies
-    public float Health;
+    [SerializeField]
+    private Image HealthBar;
+    [SerializeField]
+    private Enemy enemy;
+    
+    public float health;
     //its just to fit in the fill amount variable in the image, because it goes between 0-1 and we wanted to be between 0-health
-    private float InitialHealth;
+    private float initialHealth;
 
     void Start()
     {
-        InitialHealth = Health;
+        initialHealth = health;
     }
     //simple recieve damage function
     public void RecieveDmg(float Damage)
     {
-        Health -= Damage;
+        health -= Damage;
         //we update the health every time it recieves damage, theres no need to update it each frame
-        HealthBar.fillAmount = Health / InitialHealth;
-    }
-
-    void Update()
-    {
-        
-        if(Health <= 0)
+        HealthBar.fillAmount = health / initialHealth;
+        if (health <= 0)
         {
-            Destroy(gameObject);
+            enemy.Delete();
         }
     }
 }

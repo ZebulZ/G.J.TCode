@@ -4,32 +4,26 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
-    [SerializeField]
     private GameObject playerObj;
     [SerializeField]
     private Skeleton skeletonObj;
 
-    List<Skeleton> enemies = new List<Skeleton>();
+    List<Enemy> enemies = new List<Enemy>();
 
-    private int lifetime = 0;
-    private bool startAI = false;
-    
-    private void Setup()
+    private void Awake()
     {
+        playerObj = GameObject.FindGameObjectWithTag("Player");
         enemies.Add(skeletonObj);
+    }
+
+    public void DeleteEnemy<T> (T enemy) where T : Enemy
+    {
+        enemies.Remove(enemy);
     }
 
     //Did the presetup and setup to try and give 30 frames to the object to see if the null goes away
     private void Update()
     {
-        if (lifetime <= 30) { lifetime++; }
-        else if (lifetime > 30 && !startAI)
-        {
-            startAI = true;
-            Setup();
-        }
-
-        if (!startAI) return;
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].UpdateEnemy(playerObj.transform);

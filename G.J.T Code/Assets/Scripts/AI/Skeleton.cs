@@ -11,16 +11,18 @@ public enum EnemyState
     MoveTowardsPlayer
 }
 
-public class Skeleton : MonoBehaviour
+public class Skeleton : Enemy
 {
-    [Header ("Path Finding")]
+    [Header ("Needed connections")]
     //Patrol path to follow
     [SerializeField]
     private EditorPath pathToFollow;
+    [SerializeField]
+    private AIController aiController;
+    [SerializeField]
+    private EnemyHealth health;
 
     [Header ("Enemy stats")]
-    [SerializeField]
-    private float health = 100f;
     [SerializeField]
     private float fleeSpeed = 10f;
     [SerializeField]
@@ -42,6 +44,7 @@ public class Skeleton : MonoBehaviour
 
 
     private EnemyState skeletonState = EnemyState.Patrol;
+    private bool executingAttack = false;
 
     void OnDrawGizmos()
     {
@@ -55,28 +58,34 @@ public class Skeleton : MonoBehaviour
     /// Will be different for every enemy. Updates the state of the enemy depending on the situation
     /// </summary>
     /// <param name="playerObj"></param>
-    public void UpdateEnemy(Transform playerObj)
+    public override void UpdateEnemy(Transform playerObj)
     {
         float distance = (transform.position - playerObj.position).magnitude;
 
         switch (skeletonState)
         {
             case EnemyState.Attack:
-                if(health <= fleeThreshold)
+                if(health.health <= fleeThreshold)
                 {
+                    StopAttack();
                     skeletonState = EnemyState.Flee;
+                }
+                if (Vector3.Distance(transform.position, playerObj.position) > attackRange)
+                {
+                    StopAttack();
+                    skeletonState = EnemyState.MoveTowardsPlayer;
                 }
                 break;
             case EnemyState.Flee:
+                skeletonState = EnemyState.Patrol;
                 break;
             case EnemyState.Patrol:
-                if (distance < sightRange)
+                if (distance < sightRange && health.health > fleeThreshold)
                 {
                     skeletonState = EnemyState.MoveTowardsPlayer;
                 }
                 break;
             case EnemyState.MoveTowardsPlayer:
-                Debug.Log(Vector3.Distance(transform.position, playerObj.position));
                 if(Vector3.Distance(transform.position, playerObj.position) < attackRange)
                 {
                     skeletonState = EnemyState.Attack;
@@ -85,6 +94,10 @@ public class Skeleton : MonoBehaviour
                 {
                     pathToFollow.ResetCurrentWaypoint();
                     skeletonState = EnemyState.Patrol;
+                }
+                if (health.health <= fleeThreshold)
+                {
+                    skeletonState = EnemyState.Flee;
                 }
                 break;
             default:
@@ -99,15 +112,15 @@ public class Skeleton : MonoBehaviour
     /// </summary>
     /// <param name="playerObj"></param>
     /// <param name="enemyMode"></param>
-    public void DoAction(Transform playerObj, EnemyState enemyMode)
+    public override void DoAction(Transform playerObj, EnemyState enemyMode)
     {
         //if (pathFinder == null) return;
         //if (editorPath == null) return;
-
-
+        
         switch (enemyMode)
         {
             case EnemyState.Attack:
+                ExecuteAttack();
                 break;
             case EnemyState.Flee:
                 pathToFollow.ResetCurrentWaypoint();
@@ -118,11 +131,40 @@ public class Skeleton : MonoBehaviour
                 pathToFollow.MoveOnPath(transform, patrolSpeed, rotationSpeed);
                 break;
             case EnemyState.MoveTowardsPlayer:
-                Debug.Log("this is the problem");
                 transform.position = Vector3.Lerp(transform.position, playerObj.position, Time.deltaTime * chargingSpeed);
                 break;
             default:
                 break;
         }
+    }
+
+    public override void Delete()
+    {
+        aiController.DeleteEnemy(this);
+        Destroy(gameObject);
+    }
+
+    private void ExecuteAttack()
+    {
+        if (executingAttack) return;
+        else
+        {
+            StartCoroutine(Attack());
+            executingAttack = true;
+        }
+    }
+    
+    private void StopAttack()
+    {
+        StopCoroutine(Attack());
+        executingAttack = false;
+    }
+
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(attackSpeed);
+        //Here comes the actual damage done to player
+        Debug.Log("bam");
+        executingAttack = false;
     }
 }
