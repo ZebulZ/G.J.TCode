@@ -17,9 +17,11 @@ public class EnemyHealth : MonoBehaviour
         initialHealth = health;
     }
     //simple recieve damage function
-    public void RecieveDmg(float Damage)
+    public void RecieveDmg(float damage)
     {
-        health -= Damage;
+        Debug.Log(health + "initial health:" + initialHealth);
+
+        health -= damage;
         //we update the health every time it recieves damage, theres no need to update it each frame
         HealthBar.fillAmount = health / initialHealth;
         if (health <= 0)

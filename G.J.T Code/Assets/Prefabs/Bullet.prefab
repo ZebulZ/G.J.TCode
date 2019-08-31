@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
-  rb: {fileID: 0}
+  rb: {fileID: 6783220765907595019}
   LifeTime: 3
   Damage: 20
 --- !u!61 &8385712097005674640
