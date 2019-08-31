@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1035625411}
   - component: {fileID: 1035625413}
   - component: {fileID: 1035625412}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bakground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 1300303475}
   - component: {fileID: 1300303477}
   - component: {fileID: 1300303476}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EnemyHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1657704521}
   - component: {fileID: 1657704520}
   - component: {fileID: 9023987336313028491}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}

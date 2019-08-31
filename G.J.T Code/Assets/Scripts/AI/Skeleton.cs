@@ -17,9 +17,7 @@ public class Skeleton : Enemy
     //Patrol path to follow
     [SerializeField]
     private EditorPath pathToFollow;
-    [SerializeField]
     private AIController aiController;
-    [SerializeField]
     private EnemyHealth health;
     
     private float fleeSpeed;
@@ -38,6 +36,8 @@ public class Skeleton : Enemy
 
     private void Awake()
     {
+        aiController = GetComponentInParent<AIController>();
+        health = GetComponent<EnemyHealth>();
         fleeSpeed = aiController.fleeSpeed;
         fleeThreshold = aiController.fleeThreshold;
         patrolSpeed = aiController.patrolSpeed;
@@ -160,7 +160,7 @@ public class Skeleton : Enemy
     IEnumerator Attack()
     {
         yield return new WaitForSeconds(attackSpeed);
-        //Here comes the actual damage done to player
+        //@baby Here comes the actual damage done to player
         Debug.Log("bam");
         executingAttack = false;
     }
