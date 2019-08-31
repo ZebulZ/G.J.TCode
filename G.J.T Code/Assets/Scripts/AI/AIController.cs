@@ -5,15 +5,18 @@ using UnityEngine;
 public class AIController : MonoBehaviour
 {
     private GameObject playerObj;
-    [SerializeField]
-    private Skeleton skeletonObj;
+    private Enemy[] allEnemies;
 
     List<Enemy> enemies = new List<Enemy>();
 
     private void Awake()
     {
+        allEnemies = GetComponentsInChildren<Enemy>();
         playerObj = GameObject.FindGameObjectWithTag("Player");
-        enemies.Add(skeletonObj);
+        foreach(Enemy enemy in allEnemies)
+        {
+            enemies.Add(enemy);
+        }
     }
 
     public void DeleteEnemy<T> (T enemy) where T : Enemy

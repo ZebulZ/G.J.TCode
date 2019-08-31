@@ -138,12 +138,6 @@ public class Skeleton : Enemy
         }
     }
 
-    public override void Delete()
-    {
-        aiController.DeleteEnemy(this);
-        Destroy(gameObject);
-    }
-
     private void ExecuteAttack()
     {
         if (executingAttack) return;
@@ -166,5 +160,11 @@ public class Skeleton : Enemy
         //Here comes the actual damage done to player
         Debug.Log("bam");
         executingAttack = false;
+    }
+
+    public override void Delete()
+    {
+        aiController.DeleteEnemy(this);
+        Destroy(transform.parent.gameObject);
     }
 }
