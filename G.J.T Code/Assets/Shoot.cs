@@ -10,10 +10,20 @@ public class Shoot : MonoBehaviour
     [SerializeField] private Transform BulletPoint;
     [SerializeField] private float[] lastPressed;
 
+    [Header("Bullet Spawn Points")]
     [SerializeField] private GameObject BulletPointD;
     [SerializeField] private GameObject BulletPointU;
     [SerializeField] private GameObject BulletPointL;
     [SerializeField] private GameObject BulletPointR;
+
+    [Header("State")]
+    [HideInInspector]public bool IsInteracting;
+
+    [Header("Bullet Diagonal Spawn Points")]
+    [SerializeField] private GameObject SD;
+    [SerializeField] private GameObject WD;
+    [SerializeField] private GameObject WA;
+    [SerializeField] private GameObject SA;
 
     private bool CanShoot = true;
 
@@ -75,7 +85,27 @@ public class Shoot : MonoBehaviour
                 BulletPointD.SetActive(true);
                 BulletPointL.SetActive(false);
             }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot)
+
+        if(Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
+            BulletPoint = WA.transform;
+        }
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
+            BulletPoint = WD.transform;
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
+            BulletPoint = SD.transform;
+        }
+
+        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+        {
+            BulletPoint = SA.transform;
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanShoot && !IsInteracting)
         {
             Instantiate(Bullet, BulletPoint.position, BulletPoint.rotation);
             CanShoot = false;

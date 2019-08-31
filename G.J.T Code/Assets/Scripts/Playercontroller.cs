@@ -67,39 +67,39 @@ public class Playercontroller : MonoBehaviour
         //if not moving
         if (Axis.x == 0 && Axis.y == 0)
         {//set idle true
-                Anim.SetBool("idle", true);                
-                //if the horizontal vaue is 1 set bool to idle rigth
-                if (lastPressed[0] == 1)
-                {
-                    Anim.SetBool("IdleRigth", true);
-                    Anim.SetBool("idle", false);
-                    Anim.SetBool("IdleUp", false);
-                    Anim.SetBool("IdleDown", false);
-                }
+            Anim.SetBool("idle", true);
+            //if the horizontal vaue is 1 set bool to idle rigth
+            if (lastPressed[0] == 1)
+            {
+                Anim.SetBool("IdleRigth", true);
+                Anim.SetBool("idle", false);
+                Anim.SetBool("IdleUp", false);
+                Anim.SetBool("IdleDown", false);
+            }
             //if the horizontal vaue is -1 set bool to idle left
-                if (lastPressed[0] == -1)
-                {
-                    Anim.SetBool("IdleLeft", true);
-                    Anim.SetBool("idle", false);
-                    Anim.SetBool("IdleUp", false);
-                    Anim.SetBool("IdleDown", false);
-                }
+            if (lastPressed[0] == -1)
+            {
+                Anim.SetBool("IdleLeft", true);
+                Anim.SetBool("idle", false);
+                Anim.SetBool("IdleUp", false);
+                Anim.SetBool("IdleDown", false);
+            }
             //if the vertical vaue is 1 set bool to idle up
-                if (lastPressed[1] == 1)
-                {
-                    Anim.SetBool("IdleUp", true);
-                    Anim.SetBool("idle", false);
-                    Anim.SetBool("IdleLeft", false);
-                    Anim.SetBool("IdleRigth", false);
-                }
+            if (lastPressed[1] == 1)
+            {
+                Anim.SetBool("IdleUp", true);
+                Anim.SetBool("idle", false);
+                Anim.SetBool("IdleLeft", false);
+                Anim.SetBool("IdleRigth", false);
+            }
             //if the vertical vaue is -1 set bool to idle down
-                if (lastPressed[1] == -1)
-                {
-                    Anim.SetBool("IdleDown", true);
-                    Anim.SetBool("idle", false);
-                    Anim.SetBool("IdleLeft", false);
-                    Anim.SetBool("IdleRigth", false);
-                }
+            if (lastPressed[1] == -1)
+            {
+                Anim.SetBool("IdleDown", true);
+                Anim.SetBool("idle", false);
+                Anim.SetBool("IdleLeft", false);
+                Anim.SetBool("IdleRigth", false);
+            }
         }
         else
         {//if moving cancell all idles
@@ -123,5 +123,5 @@ public class Playercontroller : MonoBehaviour
             }
         }
     }
-    
+
 }
