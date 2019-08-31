@@ -32,6 +32,8 @@ public class Skeleton : MonoBehaviour
     [SerializeField]
     private float attackRange = 3f;
     [SerializeField]
+    private float attackDamage = 10f;
+    [SerializeField]
     private float sightRange = 3f;
     [SerializeField]
     private float rotationSpeed = 5f;
@@ -43,8 +45,10 @@ public class Skeleton : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(this.transform.position, sightRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(this.transform.position, attackRange);
     }
 
     /// <summary>
