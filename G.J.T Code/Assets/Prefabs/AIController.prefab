@@ -483,7 +483,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae37df9e6feb0042b3d07dc7dd5de71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonObj: {fileID: 8087900875787707785}
+  fleeSpeed: 10
+  fleeThreshold: 20
+  patrolSpeed: 5
+  chargingSpeed: 0.5
+  attackRange: 3
+  attackDamage: 10
+  sightRange: 10
+  rotationSpeed: 5
+  attackSpeed: 1
 --- !u!1 &8087900875699739595
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,15 +619,6 @@ MonoBehaviour:
   pathToFollow: {fileID: 8087900875099143891}
   aiController: {fileID: 8087900875362530457}
   health: {fileID: 438226186}
-  fleeSpeed: 5
-  fleeThreshold: 20
-  patrolSpeed: 5
-  chargingSpeed: 0.5
-  attackRange: 3
-  attackDamage: 10
-  sightRange: 10
-  rotationSpeed: 5
-  attackSpeed: 1
 --- !u!61 &438226185
 BoxCollider2D:
   m_ObjectHideFlags: 0

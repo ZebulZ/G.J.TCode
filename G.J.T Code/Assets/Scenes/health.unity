@@ -261,6 +261,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8087900875362530457, guid: 27c0e66ebac995249b807422d0e8e7e3,
+        type: 3}
+      propertyPath: sightRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087900875362530457, guid: 27c0e66ebac995249b807422d0e8e7e3,
+        type: 3}
+      propertyPath: chargingSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1657704522, guid: 27c0e66ebac995249b807422d0e8e7e3, type: 3}
       propertyPath: m_Camera
       value: 
@@ -567,6 +577,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5949611938289281414, guid: 0439fce88b4549542ab646b4df3402f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
     - target: {fileID: 5949611938289281410, guid: 0439fce88b4549542ab646b4df3402f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -671,11 +686,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949611938289281414, guid: 0439fce88b4549542ab646b4df3402f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0439fce88b4549542ab646b4df3402f1, type: 3}

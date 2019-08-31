@@ -21,30 +21,33 @@ public class Skeleton : Enemy
     private AIController aiController;
     [SerializeField]
     private EnemyHealth health;
-
-    [Header ("Enemy stats")]
-    [SerializeField]
-    private float fleeSpeed = 10f;
-    [SerializeField]
-    private float fleeThreshold = 20f;
-    [SerializeField]
-    private float patrolSpeed = 5f;
-    [SerializeField]
-    private float chargingSpeed = 10f;
-    [SerializeField]
-    private float attackRange = 3f;
-    [SerializeField]
-    private float attackDamage = 10f;
-    [SerializeField]
-    private float sightRange = 3f;
-    [SerializeField]
-    private float rotationSpeed = 5f;
-    [SerializeField]
-    private float attackSpeed = 1f;
+    
+    private float fleeSpeed;
+    private float fleeThreshold;
+    private float patrolSpeed;
+    private float chargingSpeed;
+    private float attackRange;
+    private float attackDamage;
+    private float sightRange;
+    private float rotationSpeed;
+    private float attackSpeed;
 
 
     private EnemyState skeletonState = EnemyState.Patrol;
     private bool executingAttack = false;
+
+    private void Awake()
+    {
+        fleeSpeed = aiController.fleeSpeed;
+        fleeThreshold = aiController.fleeThreshold;
+        patrolSpeed = aiController.patrolSpeed;
+        chargingSpeed = aiController.chargingSpeed;
+        attackRange = aiController.attackRange;
+        attackDamage = aiController.attackDamage;
+        sightRange = aiController.sightRange;
+        rotationSpeed = aiController.rotationSpeed;
+        attackSpeed = aiController.attackSpeed;
+    }
 
     void OnDrawGizmos()
     {

@@ -9,6 +9,17 @@ public class AIController : MonoBehaviour
 
     List<Enemy> enemies = new List<Enemy>();
 
+    [Header("Enemy stats")]
+    public float fleeSpeed = 10f;
+    public float fleeThreshold = 20f;
+    public float patrolSpeed = 5f;
+    public float chargingSpeed = 10f;
+    public float attackRange = 3f;
+    public float attackDamage = 10f;
+    public float sightRange = 3f;
+    public float rotationSpeed = 5f;
+    public float attackSpeed = 1f;
+
     private void Awake()
     {
         allEnemies = GetComponentsInChildren<Enemy>();
